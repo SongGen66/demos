@@ -30,13 +30,12 @@
     </div>
     <p>
       <b>Abstract.</b>
-
-      Text-to-song generation, the task of creating vocals and accompaniment from textual inputs, poses significant challenges due to domain complexity and data scarcity. Existing approaches often employ multi-stage generation procedures, resulting in cumbersome training and inference pipelines. In this paper, we propose SongGen, a fully open-source, single-stage auto-regressive transformer designed for controllable song generation. The proposed model facilitates fine-grained control over diverse musical attributes, including lyrics and textual descriptions of instrumentation, genre, mood, and timbre, while also offering an optional three-second reference clip for voice cloning. Within a unified auto-regressive framework, SongGen supports two output modes: mixed-mode, which generates a mixture of vocals and accompaniment directly, and dual-track mode, which synthesizes them separately for greater flexibility in downstream applications. To optimize performance, we empirically explore various token pattern strategies for each mode, yielding significant improvements and valuable insights. Additionally, we develop an automated data preprocessing pipeline with effective quality control. To foster community engagement and future research, we will release our model weights, training code, preprocessing pipeline, and annotated datasets. </a>.
+      Text-to-song generation, the task of creating vocals and accompaniment from textual inputs, poses significant challenges due to domain complexity and data scarcity. Existing approaches often employ multi-stage generation procedures, resulting in cumbersome training and inference pipelines. In this paper, we propose <b>SongGen</b>, a fully open-source, single-stage auto-regressive transformer designed for controllable song generation. The proposed model facilitates fine-grained control over diverse musical attributes, including lyrics and textual descriptions of instrumentation, genre, mood, and timbre, while also offering an optional three-second reference clip for voice cloning. Within a unified auto-regressive framework, SongGen supports two output modes: <b>mixed-mode</b>, which generates a mixture of vocals and accompaniment directly, and <b>dual-track mode</b>, which synthesizes them separately for greater flexibility in downstream applications. We eplore diverse token pattern strategies for each mode, leading to notable improvements and valuable insights. Furthermore, we design an automated data preprocessing pipeline with effective quality control. To foster community engagement and future research, we will release our model weights, training code, annotated data, and processing pipeline. 
     </p>
     <div>
       <p><br /></p>
       <p style="text-align: center;">
-        <img src="framework.png" width=90% class="img-fluid">
+        <img src="framework1.png" width=90% class="img-fluid">
       </p>
       <p><br /></p>
     </div>
@@ -46,8 +45,8 @@
   <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
     <h2 id="tablecontents" style="text-align: left;">Table of Contents</h2>
     <div>
-      <li><a href="#T2S-Mixed" class="btn border-white bg-white fw-bold">[Mixed pro] Text-to-Song Generation</a></li>
-      <li><a href="#T2S-Inter" class="btn border-white bg-white fw-bold">[Interleaving(A-V)] Text-to-Song Generation </a></li>
+      <li><a href="#T2S-Mixed" class="btn border-white bg-white fw-bold">[Mixed Pro] Text-to-Song Generation</a></li>
+      <li><a href="#T2S-Inter" class="btn border-white bg-white fw-bold">[Interleaving (A-V)] Text-to-Song Generation </a></li>
       <li><a href="#T2S-TEST" class="btn border-white bg-white fw-bold">Text-to-Song Generation on the MusicCaps Test Set</a></li>
         
     </div>
@@ -156,6 +155,35 @@
             </br>Acc. track:<audio controls controlslist="nodownload" class="px-1"> <source src='data/Text-to-Song/InterA-V/female-rock-shepherd/gen_acc.wav' type="audio/wav">Your browser does not support the audio element.</audio>
             </td>
           </tr>
+          <tr height=100px>
+            <td style="text-align: center">I've seen the beauty of diamonds and pearls, but they're nothing to me.</td>
+            <td style="text-align: center">The romantic music features a male voice singing a melody.</td>
+            <td style="text-align: center"><audio controls controlslist="nodownload" class="px-1"> <source src='data/Text-to-Song/InterA-V/male-romantic-diamonds/ref_vocie.wav' type="audio/wav">Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center"><audio controls controlslist="nodownload" class="px-1"> <source src='data/Text-to-Song/InterA-V/male-romantic-diamonds/gen.wav' type="audio/wav">Your browser does not support the audio element.</audio>
+            </br>Vocal track:<audio controls controlslist="nodownload" class="px-1"> <source src='data/Text-to-Song/InterA-V/male-romantic-diamonds/gen_vocal.wav' type="audio/wav">Your browser does not support the audio element.</audio>
+            </br>Acc. track:<audio controls controlslist="nodownload" class="px-1"> <source src='data/Text-to-Song/InterA-V/male-romantic-diamonds/gen_acc.wav' type="audio/wav">Your browser does not support the audio element.</audio>
+            </td>
+          </tr>
+          <tr height=100px>
+            <td style="text-align: center">I've come to talk with you again because a vision softly creeping left its seeds while ...</td>
+            <td style="text-align: center">male, soft, mellow, piano</td>
+            <td style="text-align: center"> <audio controls controlslist="nodownload" class="px-1"> <source src='data/Text-to-Song/InterA-V/male-soft-seeds/ref_voice.wav' type="audio/wav">Your browser does not support the audio element.</audio></td>
+            <td style="text-align: center"><audio controls controlslist="nodownload" class="px-1"> <source src='data/Text-to-Song/InterA-V/male-soft-seeds/gen.wav' type="audio/wav">Your browser does not support the audio element.</audio>
+            </br>Vocal track:<audio controls controlslist="nodownload" class="px-1"> <source src='data/Text-to-Song/InterA-V/male-soft-seeds/gen_vocal.wav' type="audio/wav">Your browser does not support the audio element.</audio>
+            </br>Acc. track:<audio controls controlslist="nodownload" class="px-1"> <source src='data/Text-to-Song/InterA-V/male-soft-seeds/gen_acc.wav' type="audio/wav">Your browser does not support the audio element.</audio>
+            </td>
+          </tr>
+          <tr height=100px>
+            <td style="text-align: center">So if I let down my guard, if I rip up my scars, and I show you my heart, am I beautiful? If I tell you my secrets, show my dark and my demons, tell me, Am I beautiful?</td>
+            <td style="text-align: center">A male vocalist with a soft, youthful voice sings this love song, accompanied by acoustic guitar. The rhythm adds smooth depth to the romantic, melancholic mood.</td>
+            <td style="text-align: center"> N/A</td>
+            <td style="text-align: center"><audio controls controlslist="nodownload" class="px-1"> <source src='data/Text-to-Song/InterA-V/male-soft-beautiful/gen.wav' type="audio/wav">Your browser does not support the audio element.</audio>
+            </br>Vocal track:<audio controls controlslist="nodownload" class="px-1"> <source src='data/Text-to-Song/InterA-V/male-soft-beautiful/gen_vocal.wav' type="audio/wav">Your browser does not support the audio element.</audio>
+            </br>Acc. track:<audio controls controlslist="nodownload" class="px-1"> <source src='data/Text-to-Song/InterA-V/male-soft-beautiful/gen_acc.wav' type="audio/wav">Your browser does not support the audio element.</audio>
+            </td>
+          </tr>
+          
+          
           
       </table>
     </div>
@@ -166,7 +194,7 @@
     <h3>Text-to-Song Generation on MusicCaps Test Set<a id="T2S-TEST" /></h3>
 
     <p style="margin-top: 2em">
-      In this section, we present a subset of samples generated from MusicCaps test set. For each sample, we provide the lyrics (annotated through our data preprocessing pipeline), description texts, and the vocal reference (the first three seconds of the ground truth vocal) as input to our model. We showcase the generated audio under two different generation modes: <b>Mixed Pro</b> and <b>Interleaving (A-V)</b>. For Interleaving (A-V), we display both the original vocal and accompaniment tracks, along with their summed version (presented as the first audio). Additionally, we compare our model’s results with those from Suno, a commercial product, generated using the same lyrics and descriptions. Suno struggles to accurately capture the detailed textual descriptions in MusicCaps and lacks voice cloning support, which gives our model a clear advantage in these areas.
+      In this section, we present a subset of samples generated from MusicCaps test set. For each sample, we provide the lyrics (annotated through our data preprocessing pipeline), description texts, and the vocal reference (the first three seconds of the ground truth vocal) as input to our model. We showcase the generated audio under two different generation modes: <b>Mixed Pro</b> and <b>Interleaving (A-V)</b>. For Interleaving (A-V), we display both the original vocal and accompaniment tracks, along with their summed version (presented as the first audio). 
     </p>
     <div class="container pt-3 table-responsive">
       <table class="table table-hover" id="gender_table_1">
@@ -179,7 +207,7 @@
             <th style="text-align: center">GT</th>
             <th style="text-align: center">Mixed Pro (ours)</Prog></th>
             <th style="text-align: center">Interleaving (A-V) (ours)</th>
-            <th style="text-align: center">Suno</th>
+            
 
           </tr>
         </thead>
@@ -196,7 +224,6 @@
             </br>Vocal track:<audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/0ISHZQJdeSw/inter_Vocaltrack.wav' type="audio/wav">Your browser does not support the audio element.</audio>
             </br>Acc. track: <audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/0ISHZQJdeSw/inter_Acctrack.wav' type="audio/wav">Your browser does not support the audio element.</audio>
             </td>
-            <td style="text-align: center"><audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/0ISHZQJdeSw/suno.mp3' type="audio/wav">Your browser does not support the audio element.</audio></td>
           </tr>
           <!-- to refine -->
           <tr height=100px>
@@ -210,7 +237,6 @@
             </br>Vocal track:<audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/1heMbyumHAo/inter_Vocaltrack.wav' type="audio/wav">Your browser does not support the audio element.</audio>
             </br>Acc. track: <audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/1heMbyumHAo/inter_Acctrack.wav' type="audio/wav">Your browser does not support the audio element.</audio>
             </td>
-            <td style="text-align: center"><audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/1heMbyumHAo/suno.mp3' type="audio/wav">Your browser does not support the audio element.</audio></td>
           </tr>
 
           <tr height=100px>
@@ -224,7 +250,6 @@
               Vocal track:<audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/iFSaNmZyPQo/inter_Vocaltrack.wav' type="audio/wav">Your browser does not support the audio element.</audio>
               Acc. track: <audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/iFSaNmZyPQo/inter_Acctrack.wav' type="audio/wav">Your browser does not support the audio element.</audio>
             </td>
-            <td style="text-align: center"><audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/iFSaNmZyPQo/suno.mp3' type="audio/wav">Your browser does not support the audio element.</audio></td>
           </tr>
           <tr height=100px>
             <!-- <td style="text-align: center">1 [ZUkh168Nyus]</td> -->
@@ -237,7 +262,6 @@
             </br>Vocal track:<audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/ZUkh168Nyus/inter_Vocaltrack.wav' type="audio/wav">Your browser does not support the audio element.</audio>
             </br>Acc. track: <audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/ZUkh168Nyus/inter_Acctrack.wav' type="audio/wav">Your browser does not support the audio element.</audio>
             </td>
-            <td style="text-align: center"><audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/ZUkh168Nyus/suno.mp3' type="audio/wav">Your browser does not support the audio element.</audio></td>
           </tr>
           <tr height=100px>
             <!-- <td style="text-align: center">3 [Zz1Bz1a7yPE]</td> -->
@@ -250,7 +274,6 @@
             </br>Vocal track:<audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/Zz1Bz1a7yPE/inter_Vocaltrack.wav' type="audio/wav">Your browser does not support the audio element.</audio>
             </br>Acc. track: <audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/Zz1Bz1a7yPE/inter_Acctrack.wav' type="audio/wav">Your browser does not support the audio element.</audio>
             </td>
-            <td style="text-align: center"><audio controls controlslist="nodownload" class="px-1"> <source src='data/MusicCaps/Zz1Bz1a7yPE/suno.mp3' type="audio/wav">Your browser does not support the audio element.</audio></td>
           </tr>
 
         </tbody>
